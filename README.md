@@ -1,5 +1,6 @@
-Candidate name: Alaa Hassan Mahmoud Hassan, Email: alaahassan0022@gmail.com, CV: https://drive.google.com/file/d/1b0foP2pT989E1CZ1NFkuymt_g44ZnlwW/view
-
+Candidate name: Alaa Hassan Mahmoud Hassan
+Email: alaahassan0022@gmail.com
+CV: https://drive.google.com/file/d/1b0foP2pT989E1CZ1NFkuymt_g44ZnlwW/view
 Vacancy: Backend Developer using Java Spring Boot
 
 # Mars-Rover
