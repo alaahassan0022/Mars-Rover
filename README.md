@@ -1,4 +1,4 @@
-Candidate name: Alaa Hassan Mahmoud Hassan, Vacancy: Backend Developer with Spring Boot
+Candidate name: Alaa Hassan Mahmoud Hassan, Email: alaa.hassan.00.22@gmail.com, Vacancy: Backend Developer with Spring Boot
 
 # Mars-Rover
 User Manual is at the end.
