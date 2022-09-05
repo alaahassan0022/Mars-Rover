@@ -10,19 +10,19 @@ The project structure:
 Main Classes:
 - RoverPosition: has the coordinates x and y, direction of type enum Direction, and roverStatus of type enum RoverStatus.
 
--EarthCommand: has the command string itself, and the 2D array of obstacles.
+- EarthCommand: has the command string itself, and the 2D array of obstacles.
 
 Main Enums:
--Command enum: has the four commands: F,B,R and L
--Direction enum: has the four directions: NORTH, SOUTH, EAST and WEST.
--RoverStatus: has the two status of the rover: MOVING and STOPPED
+- Command enum: has the four commands: F,B,R and L
+- Direction enum: has the four directions: NORTH, SOUTH, EAST and WEST.
+- RoverStatus: has the two status of the rover: MOVING and STOPPED
 
 Helper Classes:
--MapsLoader (mentioned next)
--DirectionConverter: makes sure that the direction that was sent in the API's endpoint is a valid one.
+- MapsLoader (mentioned next)
+- DirectionConverter: makes sure that the direction that was sent in the API's endpoint is a valid one.
 
 Helper Enums:
--CoordinateUpdate (mentioned next)
+- CoordinateUpdate (mentioned next)
 
 In order to reduce the amount of nested IF/CASEs and loops the following approaches were taken:
 
