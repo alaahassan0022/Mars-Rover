@@ -28,7 +28,7 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 
 	-Class MapsLoader was created to store 2 maps:
 		-Map 1: 
-			-The 'updates' map which contains the action that should be done with the combinations of the Directions and the Commands.
+			-The 'updates' map which contains the actions that should be done with the different combinations of the Directions and the Commands.
 			
 			-For example: if the command was to move forward and the direction was north, the y-coordiate of the RoverPosition should increment and its x-coordinate should stay the same.
 			
@@ -42,7 +42,7 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 			-The key is a composite of the x-coordinate and the y-coordinate of the obstacle
 			-The value is just an Integer of value '1', it's not used but a value was needed to be put.
 			
-		-Both maps are loaded at the beggining of the execution of any command.
+		-Both maps are loaded at the beggining of the execution of any command string.
 
 	- Direction enum:
 		-Has 2 variables of type Direction too: rotatedLeft and rotatedRight, using a static block they were set to each direction so as to perform the rotation on any of them directly.
@@ -60,8 +60,8 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 	-It calls MarsRoverService.executeCommand(EarthCommand,RoverPosition)
 	-RoverPosition has RoverStatus of MOVING by default.
 	
--MarsRoverService contains the method 'executeCommand', that iterates over the command string character by character, performing each command using the Command enum
-	-It also has a helper method that does the checking of whether the command string has any invalid commands.
+-MarsRoverService contains the method 'executeCommand', that iterates over the command string character by character, performing each command using the Command enum and checks if the upcoming coordinates are of an obstacle each iteration, if they were, RoverStatus is set to STOPPED and iterations are broken.
+	-It also has a helper method that does the checking of whether the command string has any invalid commands and throws a RuntimeException accordingly.
 	
 -Unit Tests were carried out to test the MarsRoverService method, and can be found at: 'src/test/java/com.example.mars.rover/MarsRoverServiceTest'
 
