@@ -1,7 +1,9 @@
 Candidate name: Alaa Hassan Mahmoud Hassan, Email: alaa.hassan.00.22@gmail.com, Vacancy: Backend Developer with Spring Boot
 
 # Mars-Rover
-User Manual is at the end.
+Technology used: Java Spring Boot
+
+[[User Manual is at the end.]]
 
 Parts 1 and 2 are done together in the same service method 'executeCommand', Part 1 will be executed if the obstacles array was empty, Part 2 will be executed otherwise.
 
