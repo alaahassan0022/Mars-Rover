@@ -71,7 +71,7 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 	
 	-It also has a helper method that does the checking of whether the command string has any invalid commands and throws a RuntimeException accordingly.
 	
--Unit Tests were carried out to test the MarsRoverService method, and can be found at: 'src/test/java/com.example.mars.rover/MarsRoverServiceTest'
+-Unit Tests were carried out to test the MarsRoverService method, and can be found at: 'src/test/java/com/example/mars/rover/MarsRoverServiceTest'
 
 	
 User Manual:
