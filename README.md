@@ -55,22 +55,33 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 
 
 -MarsRoverController Class has one PostMapping method that has an endpoint of "localhost:8080/api/mars-rover/x/{x}/y/{y}/direction/{direction}"
+	
 	-Where {x},{y} and {direction} are @PathVariables to set the initial RoverPosition.
+	
 	-It also has a @RequestBody of type EarthCommand to execute.
+	
 	-It calls MarsRoverService.executeCommand(EarthCommand,RoverPosition)
+	
 	-RoverPosition has RoverStatus of MOVING by default.
 	
+	
 -MarsRoverService contains the method 'executeCommand', that iterates over the command string character by character, performing each command using the Command enum and checks if the upcoming coordinates are of an obstacle each iteration, if they were, RoverStatus is set to STOPPED and iterations are broken.
+	
 	-It also has a helper method that does the checking of whether the command string has any invalid commands and throws a RuntimeException accordingly.
 	
 -Unit Tests were carried out to test the MarsRoverService method, and can be found at: 'src/test/java/com.example.mars.rover/MarsRoverServiceTest'
 
 	
 User Manual:
+
 -Postman is used to send the Post Request.
+
 -The request URL is the Controller's PostMapping method endpoint, it also needs a JSON Body of type EarthCommand.
+
 -To execute Part 1: Leave the array of obstacles empty in the JSON => "obstacles" : []
+
 -Otherwise fill it => "obstacles" : [[5,5]]
+
 -When the request is sent, a JSON object of type RoverPosition with its updated attributes values is returned.
 
 	-Test Case1:
