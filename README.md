@@ -73,50 +73,50 @@ User Manual:
 -Otherwise fill it => "obstacles" : [[5,5]]
 -When the request is sent, a JSON object of type RoverPosition with its updated attributes values is returned.
 
--Test Case1:
-	-Choose POST method
-	-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
-	-Body:
-		{
-		"commandString":"FLFFFRFLB",
-		"obstacles":[]
-		}
-	-Returns:
-		{
-		"x": 6,
-		"y": 4,
-		"direction": "NORTH",
-		"roverStatus": "MOVING"
-		}
-		
--Test Case 2:
-	-Choose POST method
-	-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
-	-Body:
-		{
-		"commandString":"FLFFFRFLB",
-		"obstacles":[[5,5]]
-		}
-	-Returns:
-		{
-			"x": 5,
+	-Test Case1:
+		-Choose POST method
+		-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
+		-Body:
+			{
+			"commandString":"FLFFFRFLB",
+			"obstacles":[]
+			}
+		-Returns:
+			{
+			"x": 6,
 			"y": 4,
 			"direction": "NORTH",
-			"roverStatus": "STOPPED"
-		}
+			"roverStatus": "MOVING"
+			}
 
--Test Case 3:
-	-Choose POST method
-	-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
-	-Body:
-		{
-		"commandString":"FLFFFRFLB",
-		"obstacles":[[5,5],[5,3]]
-		}
-	-Returns:
-		{
-			"x": 5,
-			"y": 2,
-			"direction": "NORTH",
-			"roverStatus": "STOPPED"
-		}
+	-Test Case 2:
+		-Choose POST method
+		-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
+		-Body:
+			{
+			"commandString":"FLFFFRFLB",
+			"obstacles":[[5,5]]
+			}
+		-Returns:
+			{
+				"x": 5,
+				"y": 4,
+				"direction": "NORTH",
+				"roverStatus": "STOPPED"
+			}
+
+	-Test Case 3:
+		-Choose POST method
+		-Request URL: localhost:8080/api/mars-rover/x/4/y/2/direction/EAST
+		-Body:
+			{
+			"commandString":"FLFFFRFLB",
+			"obstacles":[[5,5],[5,3]]
+			}
+		-Returns:
+			{
+				"x": 5,
+				"y": 2,
+				"direction": "NORTH",
+				"roverStatus": "STOPPED"
+			}
