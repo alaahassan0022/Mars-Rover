@@ -22,25 +22,26 @@ public class MarsRoverService {
         MapsLoader.fillOutUpdates();
         MapsLoader.fillOutObstacles(earthCommand.getObstacles());
 
-        for( int i =0;i<earthCommand.getCommandString().length();i++){
+        for(int i=0;i<earthCommand.getCommandString().length();i++){
 
             int xBefore= roverPosition.getX();
             int yBefore= roverPosition.getY();
 
-            Command.valueOf(String.valueOf(earthCommand.getCommandString().charAt(i))).apply(roverPosition);
+            String currentCommand = ""+earthCommand.getCommandString().charAt(i)+"";
+
+            Command.valueOf(currentCommand).apply(roverPosition);// ex: Command.valueOf("F").apply -> Command.F.apply -> moves forward
 
             String obstacleKey = MapsLoader.generateKey(String.valueOf(roverPosition.getX()),String.valueOf(roverPosition.getY()));
-            if(MapsLoader.getObstaclesMap().containsKey(obstacleKey)){
-
-                roverPosition.setRoverStatus(RoverStatus.STOPPED);
-                roverPosition.setX(xBefore);
-                roverPosition.setY(yBefore);
-                break;
+            if(MapsLoader.getObstaclesMap().containsKey(obstacleKey)){ // This upcoming point is an obstacle
+                roverPosition.setRoverStatus(RoverStatus.STOPPED); // set rover status to STOPPED
+                roverPosition.setX(xBefore); // set x to the older value right before the obstacle
+                roverPosition.setY(yBefore); // set y to the older value right before the obstacle
+                break; // end the iterations to report
             }
         }
         return roverPosition;
     }
-    static boolean matches(String field,String regex){
+    static boolean matches(String field, String regex){
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(field);
         return matcher.find();
