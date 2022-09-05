@@ -5,6 +5,7 @@ import com.example.mars.rover.classes.RoverPosition;
 import com.example.mars.rover.enums.Direction;
 import com.example.mars.rover.enums.RoverStatus;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,7 @@ class MarsRoverServiceTest {
     }
 
     @Test
+    @DisplayName("Test if the new rover position is returned right.")
     void shouldReturnRoverPosition() {
         earthCommand= new EarthCommand("FLFFFRFLB",new int [][]{});
 
@@ -36,8 +38,9 @@ class MarsRoverServiceTest {
 
     }
     @Test
+    @DisplayName("Test if the command string changed, that not the same rover position is returned.")
     void shouldNotReturnRoverPosition() {
-        earthCommand= new EarthCommand("FLFFFRFL",new int [][]{});
+        earthCommand= new EarthCommand("FLFFFRFL",new int [][]{}); //B was removed
 
         RoverPosition roverPosition1 = new RoverPosition(6,4,Direction.NORTH,RoverStatus.MOVING);
 
@@ -47,6 +50,7 @@ class MarsRoverServiceTest {
 
     }
     @Test
+    @DisplayName("Test if the rover met an obstacle, a report is returned.")
     void shouldReportBeforeObstacle() {
 
         earthCommand= new EarthCommand("FLFFFRFLB",new int [][]{{5,5}});
@@ -59,12 +63,14 @@ class MarsRoverServiceTest {
 
     }
     @Test
+    @DisplayName("Test if the command string was invalid, an exception should be thrown.")
     void shouldThrowException() {
         earthCommand= new EarthCommand("FLFFFRFALB",new int [][]{});
 
         assertThrows(RuntimeException.class, () -> marsRoverService.executeCommand(earthCommand,roverPosition));
     }
     @Test
+    @DisplayName("Test if the command string was valid, no exception should be thrown.")
     void shouldNotThrowException() {
         earthCommand= new EarthCommand("FLFFFRFLB",new int [][]{});
 
