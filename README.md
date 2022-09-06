@@ -163,3 +163,23 @@ and as for running it on postman:
 			"commandString":"RFFFFFLFFFFFF",
 			"obstacles":[]
 			}
+			
+	-Test Case 2:
+		-Choose POST method
+		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8")
+
+		-Body:
+			{
+			"commandString":"",
+			"obstacles":[[4,2]]
+			}
+		-Returns:
+			{
+			"commandString":"RFLFRFFFFLFFFFF",
+			"obstacles": [
+				[
+				    4,
+				    2
+				]
+		    	]
+			}
