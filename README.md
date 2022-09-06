@@ -147,7 +147,8 @@ User Manual:
 
 -Extra Classes were added: Point Class that has an x and a y coordinate, it acts as a key or a value for multiple data structures used in the service, also CommandStringAndDirection class was added it has a command string and a direction enum, it's used when translating the path of points to a command string.
 
-and as for running it on postman:
+
+and as for running it, *you need to be in Debug mode, not Run*, and then use postman as follows:
 
 	-Test Case 1:
 		-Choose POST method
