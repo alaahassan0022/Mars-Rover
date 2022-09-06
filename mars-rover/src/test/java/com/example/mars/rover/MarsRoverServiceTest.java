@@ -76,6 +76,18 @@ class MarsRoverServiceTest {
 
         assertDoesNotThrow( () -> marsRoverService.executeCommand(earthCommand,roverPosition));
     }
+    @Test
+    @DisplayName("Test if the command string is returned right.")
+    void shouldCalculateCommandString() {
+        earthCommand= new EarthCommand("",new int [][]{{4,2}});
+
+        RoverPosition roverPositionSource = new RoverPosition(2,2,Direction.NORTH,RoverStatus.MOVING);
+
+        int xDest = 7,yDest=8;
+
+        assertEquals("RFLFRFFFFLFFFFF",marsRoverService.calculateCommandString(roverPositionSource,xDest,yDest,earthCommand).getCommandString());
+
+    }
 
 
 }

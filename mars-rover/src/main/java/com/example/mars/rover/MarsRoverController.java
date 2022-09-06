@@ -23,6 +23,13 @@ public class MarsRoverController {
 
 
     }
+    @PostMapping("/source/x/{x}/y/{y}/direction/{direction}/destination/x/{xd}/y/{yd}")
+    public EarthCommand getCommandString(@RequestBody EarthCommand earthCommand, @PathVariable int x, @PathVariable int y, @PathVariable String direction, @PathVariable int xd, @PathVariable int yd){
+
+        RoverPosition roverPosition = new RoverPosition(x,y, DirectionConverter.getDirection(direction),RoverStatus.MOVING);
+
+        return marsRoverService.calculateCommandString(roverPosition,xd,yd,earthCommand);
+    }
 }
 class DirectionConverter {
     public static Direction getDirection(String direction){

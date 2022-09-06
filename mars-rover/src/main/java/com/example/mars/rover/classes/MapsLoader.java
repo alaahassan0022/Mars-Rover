@@ -32,15 +32,17 @@ public class MapsLoader{
 
         return string1+"_"+string2;
     }
+    private static Map<Point,Boolean> obstacles ;
 
-    private static Map<String,Integer> obstaclesMap ;
-    public static Map<String, Integer> getObstaclesMap() {
-        return obstaclesMap;
+    public static Map<Point, Boolean> getObstacles() {
+        return obstacles;
     }
-    public static void fillOutObstacles(int[][] obstacles){
-        obstaclesMap=new HashMap<>();
 
-        for(int i=0;i<obstacles.length;i++)
-            obstaclesMap.put(generateKey(String.valueOf(obstacles[i][0]),String.valueOf(obstacles[i][1])),1);
+    public static void fillOutObstacles(int[][] obstaclesArr){
+        obstacles=new HashMap<>();
+
+        for(int i=0;i<obstaclesArr.length;i++)
+            obstacles.put(new Point((obstaclesArr[i][0]),(obstaclesArr[i][1])),true);
     }
+
 }
