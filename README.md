@@ -143,7 +143,7 @@ User Manual:
 			}
 			
 			
--As for Part 3, an extra method is added in MarsRoverService called calculateCommandString, it uses Breadth First Search grid shortest path algortithm, stores the points in the path, and then the points in the path are translated into a command string, a unit test was carried out to test it.
+-As for Part 3, an extra method is added in MarsRoverService called calculateCommandString, it uses Breadth First Search grid shortest path algortithm, stores the points in the path, and then the points in the path are translated into a command string, a unit test was carried out to test it, and also a controller method with a different endpoint was also added to call the service method.
 
 -Extra Classes were added: Point Class that has an x and a y coordinate, it acts as a key or a value for multiple data structures used in the service, also CommandStringAndDirection class was added it has a command string and a direction enum, it's used when translating the path of points to a command string.
 
@@ -152,7 +152,7 @@ and as for running it, *you need to be in Debug mode, not Run*, and then use pos
 
 	-Test Case 1:
 		-Choose POST method
-		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8")
+		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8"
 
 		-Body:
 			{
@@ -167,7 +167,7 @@ and as for running it, *you need to be in Debug mode, not Run*, and then use pos
 			
 	-Test Case 2:
 		-Choose POST method
-		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8")
+		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8"
 
 		-Body:
 			{
