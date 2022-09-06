@@ -152,7 +152,7 @@ and as for running it, *you need to be in Debug mode, not Run*, and then use pos
 
 	-Test Case 1:
 		-Choose POST method
-		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8"
+		-Request URL: localhost:8080/api/mars-rover/source/x/2/y/2/direction/NORTH/destination/x/7/y/8"
 
 		-Body:
 			{
@@ -167,7 +167,7 @@ and as for running it, *you need to be in Debug mode, not Run*, and then use pos
 			
 	-Test Case 2:
 		-Choose POST method
-		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8"
+		-Request URL: localhost:8080/api/mars-rover/source/x/2/y/2/direction/NORTH/destination/x/7/y/8"
 
 		-Body:
 			{
