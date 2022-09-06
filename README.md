@@ -90,7 +90,7 @@ User Manual:
 
 -To execute Part 1: Leave the array of obstacles empty in the JSON => "obstacles" : []
 
--Otherwise fill it => "obstacles" : [[5,5]]
+-To execute Part 2 => for example: "obstacles" : [[5,5]]
 
 -When the request is sent, a JSON object of type RoverPosition with its updated attributes values is returned.
 
@@ -140,4 +140,24 @@ User Manual:
 				"y": 2,
 				"direction": "NORTH",
 				"roverStatus": "STOPPED"
+			}
+			
+			
+-As for Part 3, an extra method is added in MarsRoverService called calculateCommandString, it uses Breadth First Search grid shortest path algortithm, stores the points in the path, and then the points in the path are translated into a command string, a unit test was carried out to test it.
+
+and as for running it on postman:
+
+	-Test Case 1:
+		-Choose POST method
+		-Request URL: localhost:8080/api/mars-rover/x/2/y/2/direction/NORTH/destination/x/7/y/8")
+
+		-Body:
+			{
+			"commandString":"",
+			"obstacles":[]
+			}
+		-Returns:
+			{
+			"commandString":"RFFFFFLFFFFFF",
+			"obstacles":[]
 			}
