@@ -53,8 +53,10 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 		-Both maps are loaded at the beggining of the execution of any command string.
 
 	- Direction enum:
-		-Has 2 variables of type Direction too: rotatedLeft and rotatedRight, using a static block they were set to each direction so as to perform the rotation on any of them directly.
-		-For example: NORTH.rotatedRight=EAST and so on.
+		-Has 3 variables of type Direction too: opposite, rotatedLeft and rotatedRight, using a static block they were set to each direction so as to perform the rotation on any of them directly.
+		-For example: NORTH.rotatedRight=EAST, NORTH.opposite=SOUTH  and so on.
+		-also has a function called reachCommand, it is needed for Part 3, what it does is that it sees which command(s) will convert the current direction to the direction parameter.
+		
 		
 	-Command enum:
 		-Each Command of {F,B,R,L} performs a function inside that does the actual movement of the rover, whether it be a rotation or a change in coordinates.
