@@ -1,4 +1,10 @@
-Candidate name: Alaa Hassan Mahmoud Hassan, Email: alaahassan0022@gmail.com, Vacancy: Backend Developer with Spring Boot
+Candidate name: Alaa Hassan Mahmoud Hassan
+
+Email: alaahassan0022@gmail.com
+
+CV: https://drive.google.com/file/d/1b0foP2pT989E1CZ1NFkuymt_g44ZnlwW/view
+
+Vacancy: Backend Developer using Java Spring Boot
 
 # Mars-Rover
 Technology used: Java Spring Boot
@@ -76,7 +82,9 @@ In order to reduce the amount of nested IF/CASEs and loops the following approac
 	
 User Manual:
 
--Postman is used to send the Post Request.
+-Run the Java application by running this file: mars-rover/src/main/java/com/example/mars/rover/MarsRoverDemoApplication.java, keep it running in the background.
+
+-Use Postman to send the Post Request.
 
 -The request URL is the Controller's PostMapping method endpoint, it also needs a JSON Body of type EarthCommand.
 
