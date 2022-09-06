@@ -58,23 +58,18 @@ public class MarsRoverService {
 
         Direction sourceRoverDirection = sourceRoverPosition.getDirection();
 
-        boolean reached_end=false;
+//        boolean reached_end=false;
         xQueue.add(xSource); yQueue.add(ySource);
         visited.put(new Point(xSource,ySource),true);
 
-        while(xQueue.size() >0){
+        while(xQueue.size()>0){
             int x = xQueue.remove();
             int y = yQueue.remove();
             if(x==xDestination && y == yDestination){
-                reached_end=true;
                 break;
             }
             exploreNeighbours(x,y);
         }
-        if(reached_end)
-            System.out.println("reached");
-        else
-            System.out.println("not");
 
         Point destinationPoint = new Point(xDestination,yDestination);
         List<Point> pointList= new ArrayList<>();
@@ -88,13 +83,13 @@ public class MarsRoverService {
         Point previousArr[]= new Point[pointList.size()];
         for(int i=0;i<pointList.size();i++){
             previousArr[i]=pointList.get(pointList.size()-1-i);
-            System.out.println(previousArr[i]);
+            //System.out.println(previousArr[i]);
         }
 
 
         CommandStringAndDirection commandStringAndDirection;
         String commandString ="";
-        for (int i =1;i<previousArr.length;i++){
+        for (int i=1;i<previousArr.length;i++){
             if(previousArr[i].getX()>previousArr[i-1].getX()){
                 commandStringAndDirection = sourceRoverDirection.reachCommand(Direction.EAST);
                 sourceRoverDirection= commandStringAndDirection.getDirection();
