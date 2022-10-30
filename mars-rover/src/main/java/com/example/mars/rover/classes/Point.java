@@ -22,13 +22,13 @@ public class Point {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
+    public boolean equals(Object point) {
+        if (this == point)
             return true;
-        if (o == null || getClass() != o.getClass())
+        if (point == null || getClass() != point.getClass())
             return false;
-        Point that = (Point) o;
-        return x == that.x && y == that.y;
+        Point thatPoint = (Point) point;
+        return x == thatPoint.x && y == thatPoint.y;
     }
 
     @Override

@@ -46,29 +46,34 @@ public class MarsRoverService {
         Matcher matcher = pattern.matcher(field);
         return matcher.find();
     }
-    static Map<Point,Boolean> visited = new HashMap<>();
-    static Map<Point,Point> previous = new HashMap<>();
-    static Queue<Integer> xQueue = new ArrayDeque<>();
-    static Queue<Integer> yQueue = new ArrayDeque<>();
+    static Map<Point,Boolean> visited;
+    static Map<Point,Point> previous;
+    static Queue<Integer> xQueue;
+    static Queue<Integer> yQueue;
 
     public EarthCommand calculateCommandString(RoverPosition sourceRoverPosition, int xDestination, int yDestination, EarthCommand earthCommand){
+        visited = new HashMap<>();
+        previous = new HashMap<>();
+        xQueue = new ArrayDeque<>();
+        yQueue = new ArrayDeque<>();
+
+
         MapsLoader.fillOutObstacles(earthCommand.getObstacles());
 
         int xSource=sourceRoverPosition.getX(),ySource=sourceRoverPosition.getY();
 
         Direction sourceRoverDirection = sourceRoverPosition.getDirection();
 
-//        boolean reached_end=false;
         xQueue.add(xSource); yQueue.add(ySource);
         visited.put(new Point(xSource,ySource),true);
 
         while(xQueue.size()>0){
-            int x = xQueue.remove();
-            int y = yQueue.remove();
-            if(x==xDestination && y == yDestination){
+            int xCurrent = xQueue.remove();
+            int yCurrent = yQueue.remove();
+            if(xCurrent==xDestination && yCurrent == yDestination){
                 break;
             }
-            exploreNeighbours(x,y);
+            exploreNeighbours(xCurrent,yCurrent);
         }
 
         Point destinationPoint = new Point(xDestination,yDestination);
@@ -83,63 +88,64 @@ public class MarsRoverService {
         Point previousArr[]= new Point[pointList.size()];
         for(int i=0;i<pointList.size();i++){
             previousArr[i]=pointList.get(pointList.size()-1-i);
-            //System.out.println(previousArr[i]);
         }
 
 
-        CommandStringAndDirection commandStringAndDirection;
+//        CommandStringAndDirection commandStringAndDirection=null;
         String commandString ="";
+
         for (int i=1;i<previousArr.length;i++){
             if(previousArr[i].getX()>previousArr[i-1].getX()){
-                commandStringAndDirection = sourceRoverDirection.reachCommand(Direction.EAST);
-                sourceRoverDirection= commandStringAndDirection.getDirection();
-                commandString+=(commandStringAndDirection.getCommandString());
-                commandString+=("F");
+                setCurrentCommand(Direction.EAST
+                                ,sourceRoverDirection
+                                ,commandString);
             }
             else if(previousArr[i].getX()<previousArr[i-1].getX()){
-                commandStringAndDirection = sourceRoverDirection.reachCommand(Direction.WEST);
-                sourceRoverDirection= commandStringAndDirection.getDirection();
-                commandString+=(commandStringAndDirection.getCommandString());
-                commandString+=("F");
+                setCurrentCommand(Direction.WEST
+                        ,sourceRoverDirection
+                        ,commandString);
             }
             else if(previousArr[i].getY()>previousArr[i-1].getY())
             {
-                commandStringAndDirection = sourceRoverDirection.reachCommand(Direction.NORTH);
-                sourceRoverDirection= commandStringAndDirection.getDirection();
-                commandString+=(commandStringAndDirection.getCommandString());
-                commandString+=("F");
+                setCurrentCommand(Direction.NORTH
+                        ,sourceRoverDirection
+                        ,commandString);
             }
             else if(previousArr[i].getY()<previousArr[i-1].getY())
             {
-                commandStringAndDirection = sourceRoverDirection.reachCommand(Direction.SOUTH);
-                sourceRoverDirection= commandStringAndDirection.getDirection();
-                commandString+=(commandStringAndDirection.getCommandString());
-                commandString+=("F");
+                setCurrentCommand(Direction.SOUTH
+                        ,sourceRoverDirection
+                        ,commandString);
             }
         }
-
         earthCommand.setCommandString(commandString);
         return earthCommand;
     }
 
+    void setCurrentCommand( Direction direction, Direction sourceRoverDirection, String commandString ){
+        CommandStringAndDirection commandStringAndDirection = sourceRoverDirection.reachCommand(direction);
+        sourceRoverDirection= commandStringAndDirection.getDirection();
+        commandString+=(commandStringAndDirection.getCommandString());
+        commandString+=("F");
+    }
 
-    void exploreNeighbours(int x, int y){
-        int dx[]={-1,1,0,0}, dy[]={0,0,1,-1};
+    void exploreNeighbours(int xCurrent, int yCurrent){
+        int xMovements[]={-1,1,0,0}, yMovements[]={0,0,1,-1};
 
         for (int i=0;i<4;i++){
-            int xx = x+dx[i];
-            int yy = y+dy[i];
+            int xNeighbour = xCurrent+xMovements[i];
+            int yNeighbour = yCurrent+yMovements[i];
 
-            if(visited.containsKey(new Point(xx,yy)))
+            if(visited.containsKey(new Point(xNeighbour,yNeighbour)))
                 continue;
 
-            if(MapsLoader.getObstacles().containsKey(new Point(xx,yy)))
+            if(MapsLoader.getObstacles().containsKey(new Point(xNeighbour,yNeighbour)))
                 continue;
 
-            xQueue.add(xx);
-            yQueue.add(yy);
-            visited.put(new Point(xx,yy),true);
-            previous.put(new Point(xx,yy),new Point(x,y));
+            xQueue.add(xNeighbour);
+            yQueue.add(yNeighbour);
+            visited.put(new Point(xNeighbour,yNeighbour),true);
+            previous.put(new Point(xNeighbour,yNeighbour),new Point(xCurrent,yCurrent));
         }
 
 
